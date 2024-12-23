@@ -1,10 +1,11 @@
 ---
 interface Props {
-  title: string;
-  description: string;
+	title: string;
+	description: string;
+	hideHeader: boolean;
 }
 
-const { title, description } = Astro.props;
+const { title, description, hideHeader } = Astro.props;
 
 const siteTitle = "Becoming Boston";
 const metaTitle = title ? `${title} - ${siteTitle}` : `${siteTitle}`;
@@ -22,13 +23,15 @@ const metaDescription = description ? description : null;
 		<link rel="stylesheet" href="https://use.typekit.net/xnk4qem.css" />
 	</head>
 	<body class="text-midnight">
-		<header class="bg-midnight text-pewter">
-			<div class="container mx-auto px-5 py-5">
-				<a class="inline-block" href="/">
-					<img class="block mt-2 h-10" src="/brand-logo.png" alt="Becoming Boston" />
-				</a>
-			</div>
-		</header>
+		{!hideHeader &&
+			<header class="bg-midnight text-pewter">
+				<div class="container mx-auto px-5 py-5">
+					<a class="inline-block" href="/">
+						<img class="block mt-2 h-10" src="/brand-logo.png" alt="Becoming Boston" />
+					</a>
+				</div>
+			</header>
+		}
 
 		<slot />
 
