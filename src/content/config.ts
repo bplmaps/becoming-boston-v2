@@ -6,6 +6,15 @@ const themes = defineCollection({
     title: z.string(),
     description: z.string(),
     color: z.string(),
+    objects: z.array(z.object({
+      title: z.string(),
+      tombstone: z.string(),
+      image_source: z.object({
+        type: z.string(),
+        src: z.string(),
+      }),
+      description: z.string(),
+    })),
     order: z.number(),
   }),
 });

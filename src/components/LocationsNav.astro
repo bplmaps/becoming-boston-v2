@@ -1,0 +1,52 @@
+---
+import { getCollection } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  current: CollectionEntry<'themes'>;
+}
+
+const { current } = Astro.props;
+
+const entries = await getCollection('themes');
+entries.sort((a, b) => a.data.order - b.data.order);
+
+let previousEntry = null;
+let nextEntry = null;
+
+entries.forEach((entry, i) => {
+  if (current.id == entry.id) {
+    if (i > 0) {
+      previousEntry = entries[i - 1];
+    }
+
+    if (i < (entries.length - 1)) {
+      nextEntry = entries[i + 1];
+    }
+  }
+});
+---
+
+<div class="sticky top-0 inset-x-0 px-4 py-2 z-50 bg-midnight border-t-2 border-pewter text-white text-base tracking-tighter">
+  <div class="w-full flex justify-between text-xs leading-none">
+    {previousEntry && 
+      <a class="inline-flex items-center mr-auto" href={'/themes/' + previousEntry.slug}>
+        <img class="h-4 w-auto mr-1" src="/arrow-left.svg" alt="Left arrow" />
+        Previous
+      </a>
+    }
+    {nextEntry && 
+      <a class="inline-flex items-center ml-auto" href={'/themes/' + nextEntry.slug}>
+        Next
+        <img class="h-4 w-auto ml-1" src="/arrow-right.svg" alt="Right arrow" />
+      </a>
+    }
+  </div>
+  <nav class="flex flex-wrap justify-between xl:text-lg 2xl:text-xl">
+    {entries.map((entry) => (
+      ((previousEntry && previousEntry.id == entry.id) || (nextEntry && nextEntry.id == entry.id)) && (
+        <a class={`inline-block hover:underline ${(previousEntry && previousEntry.id == entry.id) ? 'mr-auto' : ''} ${(nextEntry && nextEntry.id == entry.id) ? 'ml-auto' : ''}`} href={'/themes/' + entry.slug}>{entry.data.title}</a>
+      )
+    ))}
+  </nav>
+</div>
