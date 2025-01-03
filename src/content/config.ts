@@ -14,7 +14,16 @@ const themes = defineCollection({
         src: z.string(),
       }),
       description: z.string(),
-    })),
+    })).optional(),
+    previous_objects: z.array(z.object({
+      title: z.string(),
+      tombstone: z.string(),
+      image_source: z.object({
+        type: z.string(),
+        src: z.string(),
+      }),
+      description: z.string(),
+    })).optional(),
     order: z.number(),
   }),
 });

@@ -2,6 +2,7 @@
 import { getCollection, render } from "astro:content";
 import Layout from '@layouts/Layout.astro';
 import LocationsNav from '@components/LocationsNav.astro';
+import ObjectRecord from '@components/ObjectRecord.vue';
 
 // Generate a new path for every collection entry
 export async function getStaticPaths() {
@@ -37,22 +38,22 @@ const { Content } = await render(entry);
     {entry.data.objects &&
       <div id="resources">
         {entry.data.objects.map((object) => (
-          <pre class="hidden">{JSON.stringify(object)}</pre>
+          <ObjectRecord object-info={object} client:only="vue" />
         ))}
       </div>
     }
   </article>
 
-  <!--
-  <article class="container mx-auto px-5 py-4" v-if="page.previous_objects" id="previously-featured">
-    <h2 class="text-5xl font-serif">Previously on Display</h2>
-    <div>
-
-      <object-record v-for="(object, index) in page.previous_objects" :objectInfo="object" :key="index" />
-
-    </div>
-  </article>
-  -->
+  {entry.data.previous_objects &&
+    <article class="container mx-auto px-5 py-4" id="previously-featured">
+      <h2 class="text-5xl font-serif">Previously on Display</h2>
+      <div>
+        {entry.data.previous_objects.map((object) => (
+          <ObjectRecord object-info={object} client:only="vue" />
+        ))}
+      </div>
+    </article>
+  }
 
   <LocationsNav current={ entry } />
 </Layout>
