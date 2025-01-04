@@ -1,48 +1,30 @@
-# Astro Starter Kit: Basics
+# Becoming Boston
 
-```sh
-npm create astro@latest -- --template basics
-```
+Source repository for the Becoming Boston digital exhibition, initially launched January 2023.
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/basics/devcontainer.json)
+* Astro 5.1.x
+* TailwindCSS 3.4.x
+* Openseadragon 5.0.x
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## Version history
 
-![just-the-basics](https://github.com/withastro/astro/assets/2244813/a0a5533c-a856-4198-8470-2d67b1d7c554)
+* January 2023 (V1): Launched as a Nuxt/Vue app based on Walk to the Sea codebase
+* January 2024 (V2): Converted to an Astro site for consistency with other recent LMEC properties and updated dependencies
 
-## 🚀 Project Structure
+As part of the V2 migration to astro, all Vue components with the exception of those needed for object viewer embeds were converted to native Astro components.  All markup was preserved where possible using TailwindCSS for all styling.
 
-Inside of your Astro project, you'll see the following folders and files:
+The map viewer component (`OpenSeadragon.vue`), written in Vue, is built with Openseadragon and was ported directly from the V1 Nuxt app.  The Samvera Clover IIIF viewer was also explored as a candidate for replacing Openseadragon, however issues were encountered during development related to the parsing of LMEC manifest files (viewer would get stuck with "Loading" text and not proceed any further).  Samvera also provides a native javascript web component which was also tested and produced the same result.
 
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src/
-│   ├── layouts/
-│   │   └── Layout.astro
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
+## Local development
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+* Run `yarn` to install dependencies
+* Run `yarn dev` to launch a live reload web server accessible at <http://localhost:4321>
 
-## 🧞 Commands
+## Staging 
 
-All commands are run from the root of the project, from a terminal:
+* Continuous integration set up to Netlify at <https://becoming-boston-staging.netlify.app> on the `main` branch
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+## Production deployment
 
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+* No CI set up
+* Manually run `yarn run generate` and manually copy to <https://leventhalmap.org/digital-exhibitions/becoming-boston>
