@@ -13,6 +13,7 @@
     "@astrojs/vue": "^5.0.4",
     "@tailwindcss/typography": "^0.5.15",
     "astro": "^5.1.0",
+    "astro-seo": "^0.8.4",
     "marked": "^15.0.5",
     "openseadragon": "^5.0.1",
     "tailwindcss": "^3.4.17",

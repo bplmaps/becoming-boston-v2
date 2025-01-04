@@ -7,11 +7,10 @@ import Button from '@components/Button.astro';
 const entries = await getCollection('themes');
 entries.sort((a, b) => a.data.order - b.data.order);
 
-const title = 'Home';
 const description = 'Becoming Boston: Eight Moments in the Geography of a Changing City offers an introduction to the historical and present-day story of Boston through the collections of the Leventhal Map & Education Center.';
 ---
 
-<Layout title={ title } description={ description } hideHeader={ true }>
+<Layout description={ description } hideHeader={ true }>
   <div id="hero" class="font-serif h-screen overflow-hidden">
     <div class="relative">
       <div

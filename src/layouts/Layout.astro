@@ -1,15 +1,19 @@
 ---
+import { SEO } from "astro-seo";
+
 interface Props {
-	title: string;
-	description: string;
-	hideHeader: boolean;
+	title?: string;
+	description?: string;
+	hideHeader?: boolean;
 }
 
 const { title, description, hideHeader } = Astro.props;
 
 const siteTitle = "Becoming Boston";
-const metaTitle = title ? `${title} - ${siteTitle}` : `${siteTitle}`;
-const metaDescription = description ? description : null;
+const siteParent = "Leventhal Map & Education Center at the Boston Public Library";
+const metaTitle = title ? `${title} - ${siteTitle}` : `${siteTitle} - ${siteParent}`;
+const metaDescription = description ? description : undefined;
+const metaImage = "https://iiif.digitalcommonwealth.org/iiif/2/commonwealth:js956k46x/232,218,6602,4095/,2000/0/default.jpg";
 ---
 <!doctype html>
 <html lang="en" class="scroll-smooth">
@@ -19,6 +23,25 @@ const metaDescription = description ? description : null;
 		<meta name="generator" content={ Astro.generator } />
 		<title>{ metaTitle }</title>
 		<meta name="description" content={ metaDescription }>
+		<SEO
+			title={metaTitle}
+			description={metaDescription}
+			twitter={{
+				title: `${metaTitle}`,
+				image: `${metaImage}`,
+				card: "summary",
+				site: "@bplmaps",
+			}},
+			openGraph={{
+				basic: {
+					title: `${metaTitle}`,
+					image: `${metaImage}`,
+					type: "website",
+				},
+			}}
+		/>
+		<meta name="msapplication-TileColor" content="#1d1e2c">
+		<meta name="theme-color" content="#1d1e2c">
 		<link rel="preconnect" href="https://use.typekit.net" crossorigin="true" />
 		<link rel="stylesheet" href="https://use.typekit.net/xnk4qem.css" />
 		<link rel="shortcut icon" href="https://www.leventhalmap.org/images/favicon.png" type="image/x-icon">
