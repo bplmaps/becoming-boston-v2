@@ -8,6 +8,7 @@ const themes = defineCollection({
     color: z.string(),
     objects: z.array(z.object({
       title: z.string(),
+      collection_link: z.string(),
       tombstone: z.string(),
       image_source: z.object({
         type: z.string(),
@@ -17,6 +18,7 @@ const themes = defineCollection({
     })).optional(),
     previous_objects: z.array(z.object({
       title: z.string(),
+      collection_link: z.string(),
       tombstone: z.string(),
       image_source: z.object({
         type: z.string(),
