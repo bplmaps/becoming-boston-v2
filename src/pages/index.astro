@@ -12,15 +12,25 @@ const description = 'Becoming Boston: Eight Moments in the Geography of a Changi
 ---
 
 <Layout title={ title } description={ description } hideHeader={ true }>
-  <div class="font-serif">
+  <div id="hero" class="font-serif h-screen overflow-hidden">
     <div class="relative">
+      <div
+        id="splash-image"
+        class="absolute z-50 inset-0 w-full h-full flex justify-center items-center transition-opacity duration-1000 ease-in-out cursor-pointer"
+      >
+        <img
+          class="block m-auto w-3/4 max-w-3xl h-auto sm:w-1/2"
+          src="/brand-logo.png"
+          alt="Becoming Boston"
+        />
+      </div>
       <img
         class="absolute object-cover object-center w-full h-full"
         src="https://iiif.digitalcommonwealth.org/iiif/2/commonwealth:js956k46x/232,218,6602,4095/,2000/0/default.jpg"
         alt="Map of changing Boston shoreline from 1895"
       />
       <div class="relative bg-midnight bg-opacity-60 text-white">
-        <div class="relative container mx-auto px-5 pt-20 pb-14 min-h-screen flex flex-col items-stretch transition-opacity duration-1000 ease-in-out sm:pb-28 xl:py-40">
+        <div id="headline" class="relative container mx-auto px-5 pt-20 pb-14 min-h-screen flex flex-col items-stretch transition-opacity duration-1000 ease-in-out sm:pb-28 xl:py-40 opacity-0 pointer-events-none">
           <h1 class="font-sans font-extrabold leading-snug text-3xl pb-8 mb-4 w-full lg:mb-0 lg:text-5xl 2xl:text-6xl">
             Becoming Boston: Eight Moments in the Geography of a Changing City offers an introduction to the historical and present-day story of Boston through the collections of the Leventhal Map & Education Center.
           </h1>
@@ -72,3 +82,14 @@ const description = 'Becoming Boston: Eight Moments in the Geography of a Changi
     </div>
   </div>
 </Layout>
+
+<script>
+  const hideSplash = () => {
+    document.getElementById('hero')?.classList.remove('h-screen', 'overflow-hidden');
+    document.getElementById('splash-image')?.classList.add('opacity-0', 'pointer-events-none');
+    document.getElementById('headline')?.classList.remove('opacity-0', 'pointer-events-none');
+  };
+
+  document.getElementById('splash-image')?.addEventListener('click', hideSplash);
+  setTimeout(hideSplash, 1200);
+</script>
