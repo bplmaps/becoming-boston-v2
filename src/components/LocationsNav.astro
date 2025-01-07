@@ -1,6 +1,11 @@
 ---
 import { getCollection } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
+import { Image } from 'astro:assets';
+
+import arrowRight from '../assets/arrow-right.svg'
+import arrowLeft from '../assets/arrow-left.svg'
+
 
 interface Props {
   current: CollectionEntry<'themes'>;
@@ -30,22 +35,22 @@ entries.forEach((entry, i) => {
 <div class="sticky top-0 inset-x-0 px-4 py-2 z-50 bg-midnight border-t-2 border-pewter text-white text-base tracking-tighter">
   <div class="w-full flex justify-between text-xs leading-none">
     {previousEntry && 
-      <a class="inline-flex items-center mr-auto" href={'/themes/' + previousEntry.slug}>
-        <img class="h-4 w-auto mr-1" src="/arrow-left.svg" alt="Left arrow" />
+      <a class="inline-flex items-center mr-auto" href={import.meta.env.BASE_URL + '/themes/' + previousEntry.slug}>
+        <Image class="h-4 w-auto mr-1" src={arrowLeft} alt="Left arrow" />
         Previous
       </a>
     }
     {nextEntry && 
-      <a class="inline-flex items-center ml-auto" href={'/themes/' + nextEntry.slug}>
+      <a class="inline-flex items-center ml-auto" href={import.meta.env.BASE_URL + '/themes/' + nextEntry.slug}>
         Next
-        <img class="h-4 w-auto ml-1" src="/arrow-right.svg" alt="Right arrow" />
+        <Image class="h-4 w-auto ml-1" src={arrowRight} alt="Right arrow" />
       </a>
     }
   </div>
   <nav class="flex flex-wrap justify-between xl:text-lg 2xl:text-xl">
     {entries.map((entry) => (
       ((previousEntry && previousEntry.id == entry.id) || (nextEntry && nextEntry.id == entry.id)) && (
-        <a class={`inline-block hover:underline ${(previousEntry && previousEntry.id == entry.id) ? 'mr-auto' : ''} ${(nextEntry && nextEntry.id == entry.id) ? 'ml-auto' : ''}`} href={'/themes/' + entry.slug}>{entry.data.title}</a>
+        <a class={`inline-block hover:underline ${(previousEntry && previousEntry.id == entry.id) ? 'mr-auto' : ''} ${(nextEntry && nextEntry.id == entry.id) ? 'ml-auto' : ''}`} href={import.meta.env.BASE_URL + '/themes/' + entry.slug}>{entry.data.title}</a>
       )
     ))}
   </nav>

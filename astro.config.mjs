@@ -7,5 +7,7 @@ import vue from '@astrojs/vue';
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [tailwind(), vue()]
+  integrations: [tailwind(), vue()],
+  site: 'https://www.leventhalmap.org',
+  base: '/digital-exhibitions/becoming-boston'
 });

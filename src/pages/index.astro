@@ -3,6 +3,9 @@ import { getCollection } from 'astro:content';
 
 import Layout from '@layouts/Layout.astro';
 import Button from '@components/Button.astro';
+import { Image } from 'astro:assets';
+
+import brandLogo from '../assets/brand-logo.png';
 
 const entries = await getCollection('themes');
 entries.sort((a, b) => a.data.order - b.data.order);
@@ -17,9 +20,9 @@ const description = 'Becoming Boston: Eight Moments in the Geography of a Changi
         id="splash-image"
         class="absolute z-50 inset-0 w-full h-full flex justify-center items-center transition-opacity duration-1000 ease-in-out cursor-pointer"
       >
-        <img
+        <Image
           class="block m-auto w-3/4 max-w-3xl h-auto sm:w-1/2"
-          src="/brand-logo.png"
+          src={brandLogo}
           alt="Becoming Boston"
         />
       </div>
@@ -62,7 +65,7 @@ const description = 'Becoming Boston: Eight Moments in the Geography of a Changi
           <ul class="text-2xl xl:text-5xl">
             {entries.map((entry) => (
               <li class="mb-2">
-                <a class="hover:underline" href={'/themes/' + entry.slug}>{entry.data.title}</a>
+                <a class="hover:underline" href={import.meta.env.BASE_URL + '/themes/' + entry.slug}>{entry.data.title}</a>
               </li>
             ))}
           </ul>

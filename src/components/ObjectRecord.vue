@@ -19,7 +19,7 @@ import OpenSeadragon from '@components/OpenSeadragon.vue';
                     :id="uuidv4()"
                     :options="{
                       tileSources: [objectInfo.image_source.src],
-                      prefixUrl: '/openseadragon/',
+                      prefixUrl: '/digital-exhibitions/becoming-boston/openseadragon/',
                       preserveViewport: true,
                       visibilityRatio: 1,
                       defaultZoomLevel: 0,
