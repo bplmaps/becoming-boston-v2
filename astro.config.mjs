@@ -9,5 +9,8 @@ import vue from '@astrojs/vue';
 export default defineConfig({
   integrations: [tailwind(), vue()],
   site: 'https://www.leventhalmap.org',
-  base: '/digital-exhibitions/becoming-boston'
+  base: '/digital-exhibitions/becoming-boston',
+  redirects: {
+    '/qr/intro': '/digital-exhibitions/becoming-boston/'
+  }
 });
