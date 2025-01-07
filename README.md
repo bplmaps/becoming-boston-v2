@@ -9,7 +9,7 @@ Source repository for the Becoming Boston digital exhibition, initially launched
 ## Version history
 
 * January 2023 (V1): Launched as a Nuxt/Vue app based on Walk to the Sea codebase
-* January 2024 (V2): Converted to an Astro site for consistency with other recent LMEC properties and updated dependencies
+* January 2025 (V2): Converted to an Astro site for consistency with other recent LMEC properties and updated dependencies
 
 As part of the V2 migration to astro, all Vue components with the exception of those needed for object viewer embeds were converted to native Astro components.  All markup was preserved where possible using TailwindCSS for all styling.
 
