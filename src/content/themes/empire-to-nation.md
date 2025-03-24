@@ -16,6 +16,16 @@ objects:
 
 
       _Note: the image above depicts a different copy of the Pelham map than the one on display in the physical exhibition._
+  - title: A new and correct chart of the sea coast of New-England from Cape Codd to Casco Bay
+    tombstone: >
+      Henry Barnsley || 1767 || Mapping Boston Collection
+    collection_link: https://collections.leventhalmap.org/search/commonwealth:3f462v44t
+    image_source: 
+      type: "iiif"
+      src: https://iiif.digitalcommonwealth.org/iiif/2/commonwealth:3f462v453
+    description: >
+      The coastal area stretching from Long Island Sound to the Gulf of Maine defined the regional identity of New England in the eighteenth century, and the city of Boston lay at the geographic, economic, and political center of this region. This map, with north oriented to the right, covers the coastline from Cape Cod to Casco Bay; today’s Portland, Maine is labeled with its earlier name, Falmouth. Henry Barnsley’s chart was part of The English Pilot, the first major sea-atlas produced in England and an essential tool for the navigators whose work was crucial to the maritime economy. In the upper right, four elevation profiles provide a ship’s-eye view of landmarks that sailors could look for to identify their location along the coast. New Englanders’ specialization in shipping and trading led to prosperity, but also left the region particularly vulnerable to changes in the British Empire’s economic policies.
+previous_objects:
   - title: "A map of the coast of New England, from Staten Island to the island of Breton"
     tombstone: >
       Cyprian Southack || ca. 1737 || Mapping Boston Collection 
