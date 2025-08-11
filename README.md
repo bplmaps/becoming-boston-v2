@@ -20,10 +20,6 @@ The map viewer component (`OpenSeadragon.vue`), written in Vue, is built with Op
 * Run `yarn` to install dependencies
 * Run `yarn dev` to launch a live reload web server accessible at <http://localhost:4321>
 
-## Staging 
-
-* Continuous integration set up to Netlify at <https://becoming-boston-staging.netlify.app> on the `main` branch
-
 ## Production deployment
 
 * No CI set up
